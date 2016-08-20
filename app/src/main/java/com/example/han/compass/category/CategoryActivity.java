@@ -24,7 +24,7 @@ public class CategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-
+        setTitle("카테고리");
         cat1 = (Button)findViewById(R.id.category1); //두근
         cat2 = (Button)findViewById(R.id.category2); //소근
         cat3 = (Button)findViewById(R.id.category3); //야미
