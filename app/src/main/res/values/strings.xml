@@ -3,10 +3,14 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name = "kakao_app_key">d14419e2d476c0f6d06597fa287a503a</string>
+
     <string name="app_name">Compass</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_select_member">SelectMemberActivity</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="network_assignExisted">already assigned</string>
+    <string name="network_fail1">네트워크가 원활하지 않습니다. 잠시 후 재시도합니다.</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

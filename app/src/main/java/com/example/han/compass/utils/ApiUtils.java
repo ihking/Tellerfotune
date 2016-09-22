@@ -9,5 +9,5 @@ import retrofit2.http.Query;
  */
 public interface ApiUtils {
     @GET("/users/getName")
-    public Call<Repo> retroTest(@Query("name") String profile);
+    public Call<Repo_User> retroTest(@Query("name") String profile);
 }

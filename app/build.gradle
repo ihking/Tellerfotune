@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.han.compass"
-        minSdkVersion 23
+        minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -28,10 +28,12 @@ dependencies {
     compile 'com.android.support:design:23.+'
     compile 'com.squareup.retrofit2:retrofit:2.1.0' //retrofit
     compile 'com.github.bumptech.glide:glide:3.6.0'
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
 
 //    compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
 //    compile 'com.google.android.gms:play-services:9.4.0' //google map
     compile files('libs/libDaumMapAndroid.jar')
-
+    compile group: project.KAKAO_SDK_GROUP, name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
+    compile group: 'com.kakao.sdk', name: 'kakaolink', version: project.KAKAO_SDK_VERSION
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta3'
 }

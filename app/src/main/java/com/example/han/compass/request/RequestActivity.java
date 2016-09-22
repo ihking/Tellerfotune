@@ -18,10 +18,15 @@ public class RequestActivity extends AppCompatActivity {
 //            "", "", "", "", "", "", "",
 //            "", "" };
 
+    CircleDrawing circleDraw;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
+
+        circleDraw = (CircleDrawing) findViewById(R.id.chart1);
+        circleDraw.start();
 //      예전 오픈소스 활용했을 떄 코드
 //        mChart = (PieChart) findViewById(R.id.chart1);
 //        mChart.setExtraOffsets(5,5,5,5);

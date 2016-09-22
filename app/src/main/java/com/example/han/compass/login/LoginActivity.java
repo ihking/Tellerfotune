@@ -5,8 +5,9 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
-import com.example.han.compass.MainActivity;
+import com.example.han.compass.MyApplication;
 import com.example.han.compass.R;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -25,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
-        Session.getCurrentSession().checkAndImplicitOpen(); // ???
+        Session.getCurrentSession().checkAndImplicitOpen(); //
 
 //        //디버그 키
 //         try {
@@ -59,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
         Session.getCurrentSession().removeCallback(callback);
     }
 
-    private void redirectMainActivity() {
-        startActivity(new Intent(this, MainActivity.class));
+    private void redirectSignUpActivity() {
+        startActivity(new Intent(this, KaKaoSignUpActivity.class));
         finish();
     }
 
@@ -69,7 +70,11 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onSessionOpened() {
             Log.d("LoginActivity 64 로그인 성공", "");
-            redirectMainActivity();
+            if(SharedPreferenceUtil.getSharedPreference(getApplicationContext(), "accessToken").equals("")){
+                SharedPreferenceUtil.putSharedPreference(getApplicationContext(), "accessToken", Session.getCurrentSession().getAccessToken());
+                Toast.makeText(getApplicationContext(), MyApplication.accessToken + "", Toast.LENGTH_SHORT).show();
+            }
+            redirectSignUpActivity();
         }
 
         @Override
@@ -79,6 +84,4 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
-
-
 }

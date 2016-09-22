@@ -7,10 +7,10 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.github.mikephil.charting.charts.PieChart
+    <com.example.han.compass.request.CircleDrawing
         android:id="@+id/chart1"
-        android:layout_width="229dp"
-        android:layout_height="229dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
         android:layout_marginTop="20dp" />
 
     <RelativeLayout

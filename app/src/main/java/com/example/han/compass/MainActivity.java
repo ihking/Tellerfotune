@@ -4,25 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.han.compass.category.CategoryActivity;
-import com.example.han.compass.category.CategoryListActivity;
+import com.example.han.compass.login.LoginActivity;
 import com.example.han.compass.member.SelectMemberActivity;
-
-import retrofit2.Retrofit;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -59,6 +56,22 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+//        //setting button 관련 (일단은 로그아웃으로 구현)
+        View navHeaderLayout = navigationView.getHeaderView(0);
+        navHeaderLayout.findViewById(R.id.setting).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserManagement.requestLogout(new LogoutResponseCallback() {
+                    @Override
+                    public void onCompleteLogout() {
+                        //로그아웃 성공 후 하고싶은 내용 코딩 ~
+                        redirectLogoutActivity();
+                    }
+                });
+            }
+        });
+
         navigationView.setNavigationItemSelectedListener(this);
         // 커스텀 어댑터 생성
         m_Adapter = new CustomAdapter();
@@ -139,5 +152,12 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    protected void redirectLogoutActivity() {
+        final Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
